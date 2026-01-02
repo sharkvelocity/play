@@ -19,4 +19,4 @@ Use equipment, track sanity, explore a haunted environment, and survive encounte
 
 ## 🚀 How to Run
 
-1. [https://phasmophoney-4415014015.us-west1.run.app/]
+1. [https://sharkvelocity.github.io/play/index.html]
