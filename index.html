@@ -2,91 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-fullscreen" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
     <title>PhasmaPhoney</title>
-    
-    <!-- Preconnect to CDNs for faster loading -->
-    <link rel="preconnect" href="https://cdn.babylonjs.com" crossorigin>
-    <link rel="preconnect" href="https://code.jquery.com" crossorigin>
-    <link rel="preconnect" href="https://unpkg.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-    <link rel="preconnect" href="https://esm.sh" crossorigin>
-    
-    <!-- Critical CSS first -->
-    <link rel="stylesheet" crossorigin href="./assets/index-BLzsSpCR.css">
-    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-    
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    <script src="https://code.jquery.com/pep/0.4.3/pep.js"></script>
+    <script src="https://cdn.babylonjs.com/cannon.js"></script>
+    <script src="https://cdn.babylonjs.com/materialsLibrary/babylonjs.materials.min.js"></script>
+    <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+    <script src="https://cdn.babylonjs.com/serializers/babylonjs.serializers.min.js"></script>
+    <script src="https://cdn.babylonjs.com/gui/babylon.gui.min.js"></script>
+    <script src="https://unpkg.com/earcut@2.2.4/dist/earcut.min.js"></script>
+        <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <style>
       body {
         font-family: 'VT323', monospace;
       }
-      /* Loading screen - will be visible while scripts load */
-      #loading-screen {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: #000;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
-        font-family: 'VT323', monospace;
-        color: #22d3ee;
-      }
-      #loading-bar-container {
-        width: 80%;
-        max-width: 400px;
-        height: 20px;
-        background: #1f2937;
-        border: 2px solid #22d3ee;
-        margin-top: 20px;
-        position: relative;
-        overflow: hidden;
-      }
-      #loading-bar {
-        height: 100%;
-        background: linear-gradient(90deg, #22d3ee, #06b6d4);
-        width: 0%;
-        transition: width 0.3s ease;
-        box-shadow: 0 0 10px #22d3ee;
-      }
-      #loading-text {
-        margin-top: 10px;
-        font-size: 18px;
-        text-shadow: 0 0 5px #22d3ee;
-      }
     </style>
-    
-    <!-- Tailwind config -->
-    <script>
-      // Mobile-specific memory management
-      window.mobileOptimizations = {
-        isMobile: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent),
-        isLowEnd: navigator.hardwareConcurrency <= 4 || navigator.deviceMemory <= 4,
-        chunkLoadDelay: 100 // ms between loading heavy scripts
-      };
-      
-      // Progress tracking
-      window.loadProgress = {
-        current: 0,
-        total: 8, // Number of major loading steps
-        update: function(step) {
-          this.current = step;
-          const percent = Math.floor((this.current / this.total) * 100);
-          const bar = document.getElementById('loading-bar');
-          const text = document.getElementById('loading-text');
-          if (bar) bar.style.width = percent + '%';
-          if (text) text.textContent = percent + '%';
-        }
-      };
-    </script>
-    
     <script src="https://cdn.tailwindcss.com/3.4.17"></script>
     <script>
       tailwind.config = {
@@ -100,116 +31,25 @@
       }
     </script>
 
-    <script type="importmap">
-    {
-      "imports": {
-        "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-        "react/": "https://esm.sh/react@^19.2.3/",
-        "react": "https://esm.sh/react@^19.2.3",
-        "vitest": "https://esm.sh/vitest@^4.0.16",
-        "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
-        "zustand/": "https://esm.sh/zustand@^5.0.9/",
-        "zustand": "https://esm.sh/zustand@^5.0.9",
-        "vite": "https://esm.sh/vite@^7.3.0",
-        "path": "https://esm.sh/path@^0.12.7",
-        "@testing-library/jest-dom": "https://esm.sh/@testing-library/jest-dom@^6.9.1"
-      }
-    }
-    </script>
+<script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "vitest": "https://esm.sh/vitest@^4.0.16",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
+    "zustand/": "https://esm.sh/zustand@^5.0.9/",
+    "zustand": "https://esm.sh/zustand@^5.0.9",
+    "vite": "https://esm.sh/vite@^7.3.0",
+    "path": "https://esm.sh/path@^0.12.7",
+    "@testing-library/jest-dom": "https://esm.sh/@testing-library/jest-dom@^6.9.1"
+  }
+}
+</script>
+  <script type="module" crossorigin src="./assets/index-CJq4BT60.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-BLzsSpCR.css">
 </head>
-<body class="bg-black text-white">
-    <!-- Loading screen -->
-    <div id="loading-screen">
-      <div style="font-size: 48px; margin-bottom: 20px; text-shadow: 0 0 10px #22d3ee;">
-        PHASMAPHONEY
-      </div>
-      <div id="loading-bar-container">
-        <div id="loading-bar"></div>
-      </div>
-      <div id="loading-text">0%</div>
-      <div style="margin-top: 20px; font-size: 14px; opacity: 0.7;">
-        INITIALIZING...
-      </div>
-    </div>
-    
-    <div id="root"></div>
-    
-    <!-- Load scripts in chunks to prevent memory overflow on mobile -->
-    <script>
-      (async function loadScriptsSequentially() {
-        const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
-        const delayTime = window.mobileOptimizations.isMobile ? 150 : 50;
-        
-        function loadScript(src) {
-          return new Promise((resolve, reject) => {
-            const script = document.createElement('script');
-            script.src = src;
-            script.onload = resolve;
-            script.onerror = reject;
-            document.head.appendChild(script);
-          });
-        }
-        
-        try {
-          // Step 1: Core Babylon
-          window.loadProgress.update(1);
-          await loadScript('https://cdn.babylonjs.com/babylon.js');
-          await delay(delayTime);
-          
-          // Step 2: Touch support
-          window.loadProgress.update(2);
-          await loadScript('https://code.jquery.com/pep/0.4.3/pep.js');
-          await delay(delayTime);
-          
-          // Step 3: Physics (can be heavy)
-          window.loadProgress.update(3);
-          await loadScript('https://cdn.babylonjs.com/cannon.js');
-          await delay(delayTime);
-          
-          // Step 4: Materials library
-          window.loadProgress.update(4);
-          await loadScript('https://cdn.babylonjs.com/materialsLibrary/babylonjs.materials.min.js');
-          await delay(delayTime);
-          
-          // Step 5: Loaders
-          window.loadProgress.update(5);
-          await loadScript('https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js');
-          await delay(delayTime);
-          
-          // Step 6: Serializers & GUI
-          window.loadProgress.update(6);
-          await loadScript('https://cdn.babylonjs.com/serializers/babylonjs.serializers.min.js');
-          await loadScript('https://cdn.babylonjs.com/gui/babylon.gui.min.js');
-          await delay(delayTime);
-          
-          // Step 7: Earcut
-          window.loadProgress.update(7);
-          await loadScript('https://unpkg.com/earcut@2.2.4/dist/earcut.min.js');
-          await delay(delayTime);
-          
-          // Step 8: Main app bundle
-          window.loadProgress.update(8);
-          await loadScript('./assets/index-BOxQccgA.js');
-          
-          // Remove loading screen after a short delay
-          setTimeout(() => {
-            const loadingScreen = document.getElementById('loading-screen');
-            if (loadingScreen) {
-              loadingScreen.style.opacity = '0';
-              loadingScreen.style.transition = 'opacity 0.5s';
-              setTimeout(() => loadingScreen.remove(), 500);
-            }
-          }, 500);
-          
-        } catch (error) {
-          console.error('Failed to load scripts:', error);
-          document.getElementById('loading-text').textContent = 'ERROR LOADING';
-          document.getElementById('loading-text').style.color = '#ef4444';
-        }
-      })();
-    </script>
-</body>
-</html></head>
 <body class="bg-black text-white">
     <div id="root"></div>
 </body>
