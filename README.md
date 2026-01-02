@@ -1,4 +1,4 @@
-# 👻 Phasma‑Phoney 3D
+# 👻 Phasmaphoney
 
 A real-time ghost investigation game built using Babylon.js and WebGL.  
 Use equipment, track sanity, explore a haunted environment, and survive encounters with 24 ghost types.
