@@ -1,0 +1,9 @@
+@echo off
+rem This script removes the .txt extension from all files in the current directory and its subdirectories.
+
+for /r . %%f in (*.txt) do (
+  ren "%%f" "%%~nf"
+)
+
+echo Done.
+pause
