@@ -5,7 +5,6 @@ C:.
 |   RepoTree_20260331_0551.txt
 |   
 +---cursed_item
-|       malelatin.mp3
 |       musicbox_end.mp3
 |       music_box_play.mp3
 |       ouija_planchette.mp3
@@ -99,7 +98,7 @@ C:.
 |   |   scribble.mp3
 |   |   spirit_box.wav
 |   |   toss.wav
-|   |   
+|   |    m
 |   \---phonograph
 |           beatbox.wav
 |           jam.wav
@@ -107,21 +106,6 @@ C:.
 |           mimic.wav
 |           untitled.wav
 |           
-+---misc_sfx
-|       highengery.mp3
-|       Ignigenesis.wav
-|       menumusic1.mp3
-|       menumusic2.mp3
-|       mixed.wav
-|       revengesoundtrack.mp3
-|       slurp1.mp3
-|       slurp2.mp3
-|       slurp3.mp3
-|       static1.mp3
-|       static2.mp3
-|       static3.mp3
-|       Untitled.txt
-|       
 +---player_sfx
 |       footstep_asphalt.mp3
 |       footstep_asphalt1.mp3
